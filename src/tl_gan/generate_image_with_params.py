@@ -7,8 +7,8 @@ import tensorflow as tf
 import pickle
 import glob
 from PIL import Image
-from .feature_axis import disentangle_feature_axis_by_idx
-from .generate_image import gen_single_img
+from src.tl_gan.feature_axis import disentangle_feature_axis_by_idx
+from src.tl_gan.generate_image import gen_single_img
 
 def generate_image_with_features(feature_values, locked_features=None):
     """
