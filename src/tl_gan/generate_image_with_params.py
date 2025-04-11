@@ -7,8 +7,8 @@ import tensorflow as tf
 import pickle
 import glob
 from PIL import Image
-from src.tl_gan.feature_axis import disentangle_feature_axis_by_idx
-from src.tl_gan.generate_image import gen_single_img
+import src.tl_gan.feature_axis as feature_axis
+import src.tl_gan.generate_image as generate_image
 
 def generate_image_with_features(feature_values, locked_features=None):
     """
@@ -50,7 +50,7 @@ def generate_image_with_features(feature_values, locked_features=None):
     locked_indices = [feature_names.index(f) for f in locked_features if f in feature_names]
     
     # Disentangle feature directions
-    feature_direction_disentangled = disentangle_feature_axis_by_idx(
+    feature_direction_disentangled = feature_axis.disentangle_feature_axis_by_idx(
         feature_direction, 
         idx_base=np.array(locked_indices)
     )
@@ -62,7 +62,7 @@ def generate_image_with_features(feature_values, locked_features=None):
             latents += feature_direction_disentangled[:, idx] * value
     
     # Generate image
-    image = gen_single_img(z=latents[0], Gs=Gs)
+    image = generate_image.gen_single_img(z=latents[0], Gs=Gs)
     
     return image
 
