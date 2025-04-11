@@ -117,8 +117,8 @@ if __name__ == '__main__':
     print("\nAvailable features:")
     print("-----------------")
     features = get_available_features()
-    for i, feature in enumerate(features, 1):
-        print(f"{i:2d}. {feature}")
+    for  feature in features:
+        print(feature)
     print("\n")
 
     # Example usage
