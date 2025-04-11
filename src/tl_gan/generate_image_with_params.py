@@ -113,6 +113,14 @@ def get_available_features():
     return features
 
 if __name__ == '__main__':
+    # Print available features
+    print("\nAvailable features:")
+    print("-----------------")
+    features = get_available_features()
+    for i, feature in enumerate(features, 1):
+        print(f"{i:2d}. {feature}")
+    print("\n")
+
     # Example usage
     logger.info("Starting example image generation")
     feature_values = {
